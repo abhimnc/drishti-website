@@ -1,0 +1,8 @@
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { Button } from "@/components/ui/button";
+import { SiteShell } from "@/components/SiteShell";
+import { publicationMeta } from "@/lib/publishing";
+export const Route = createFileRoute("/reset-password")({ head: () => publicationMeta("Reset password", "Set a new password for your publishing account."), component: ResetPassword });
+function ResetPassword() { const [recovery, setRecovery] = useState(false); const [password, setPassword] = useState(""); const [message, setMessage] = useState(""); const navigate = useNavigate(); useEffect(() => { setRecovery(window.location.hash.includes("type=recovery")); }, []); return <SiteShell><form className="mx-auto max-w-md space-y-6 px-6 py-20" onSubmit={async e => { e.preventDefault(); const { error } = await supabase.auth.updateUser({ password }); if (error) setMessage(error.message); else navigate({ to: "/studio" }); }}><h1 className="text-4xl">Set a new password</h1>{recovery ? <><label className="block">New password<input className="mt-2 w-full border border-input bg-background px-3 py-3" type="password" autoComplete="new-password" minLength={8} required value={password} onChange={e => setPassword(e.target.value)} /></label><Button type="submit">Save password</Button></> : <p>Open the password reset link from your email to continue.</p>}{message && <p role="status">{message}</p>}</form></SiteShell>; }

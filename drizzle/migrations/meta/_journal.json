@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1792909644440,
+      "tag": "0000_publishing_library",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1792909845605,
+      "tag": "0001_restrict_publishing_helpers",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1792910960351,
+      "tag": "0002_preparation_questionnaire",
+      "breakpoints": true
+    }
+  ]
+}
