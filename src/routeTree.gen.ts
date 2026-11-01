@@ -18,7 +18,6 @@ import { Route as FaqsRouteImport } from './routes/faqs'
 import { Route as JourneyRouteImport } from './routes/journey'
 import { Route as MentorshipRouteImport } from './routes/mentorship'
 import { Route as PreparationRouteImport } from './routes/preparation'
-import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as StudioRouteImport } from './routes/studio'
 import { Route as TestSeriesRouteImport } from './routes/test-series'
@@ -70,11 +69,6 @@ const PreparationRoute = PreparationRouteImport.update({
   path: '/preparation',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ResetPasswordRoute = ResetPasswordRouteImport.update({
-  id: '/reset-password',
-  path: '/reset-password',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ShopRoute = ShopRouteImport.update({
   id: '/shop',
   path: '/shop',
@@ -111,7 +105,6 @@ export interface FileRoutesByFullPath {
   '/journey': typeof JourneyRoute
   '/mentorship': typeof MentorshipRoute
   '/preparation': typeof PreparationRoute
-  '/reset-password': typeof ResetPasswordRoute
   '/shop': typeof ShopRoute
   '/studio': typeof StudioRoute
   '/test-series': typeof TestSeriesRoute
@@ -128,7 +121,6 @@ export interface FileRoutesByTo {
   '/journey': typeof JourneyRoute
   '/mentorship': typeof MentorshipRoute
   '/preparation': typeof PreparationRoute
-  '/reset-password': typeof ResetPasswordRoute
   '/shop': typeof ShopRoute
   '/studio': typeof StudioRoute
   '/test-series': typeof TestSeriesRoute
@@ -146,7 +138,6 @@ export interface FileRoutesById {
   '/journey': typeof JourneyRoute
   '/mentorship': typeof MentorshipRoute
   '/preparation': typeof PreparationRoute
-  '/reset-password': typeof ResetPasswordRoute
   '/shop': typeof ShopRoute
   '/studio': typeof StudioRoute
   '/test-series': typeof TestSeriesRoute
@@ -165,7 +156,6 @@ export interface FileRouteTypes {
     | '/journey'
     | '/mentorship'
     | '/preparation'
-    | '/reset-password'
     | '/shop'
     | '/studio'
     | '/test-series'
@@ -182,7 +172,6 @@ export interface FileRouteTypes {
     | '/journey'
     | '/mentorship'
     | '/preparation'
-    | '/reset-password'
     | '/shop'
     | '/studio'
     | '/test-series'
@@ -199,7 +188,6 @@ export interface FileRouteTypes {
     | '/journey'
     | '/mentorship'
     | '/preparation'
-    | '/reset-password'
     | '/shop'
     | '/studio'
     | '/test-series'
@@ -217,7 +205,6 @@ export interface RootRouteChildren {
   JourneyRoute: typeof JourneyRoute
   MentorshipRoute: typeof MentorshipRoute
   PreparationRoute: typeof PreparationRoute
-  ResetPasswordRoute: typeof ResetPasswordRoute
   ShopRoute: typeof ShopRoute
   StudioRoute: typeof StudioRoute
   TestSeriesRoute: typeof TestSeriesRoute
@@ -289,13 +276,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PreparationRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/reset-password': {
-      id: '/reset-password'
-      path: '/reset-password'
-      fullPath: '/reset-password'
-      preLoaderRoute: typeof ResetPasswordRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/shop': {
       id: '/shop'
       path: '/shop'
@@ -356,7 +336,6 @@ const rootRouteChildren: RootRouteChildren = {
   JourneyRoute: JourneyRoute,
   MentorshipRoute: MentorshipRoute,
   PreparationRoute: PreparationRoute,
-  ResetPasswordRoute: ResetPasswordRoute,
   ShopRoute: ShopRoute,
   StudioRoute: StudioRoute,
   TestSeriesRoute: TestSeriesRoute,

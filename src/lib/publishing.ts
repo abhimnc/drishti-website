@@ -31,4 +31,5 @@ export function youtubeId(value: string) {
 export function slugify(value: string) { return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""); }
 export function publicationMeta(title: string, description: string) {
   return { meta: [{ title: `${title} | Dr. Drishti Kalra` }, { name: "description", content: description }, { property: "og:title", content: `${title} — Dr. Drishti Kalra` }, { property: "og:description", content: description }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] };
-}
+}// The single publisher signs in with a username; Supabase auth stores it as this non-deliverable address.
+export const publisherEmail = (username: string) => `${username.trim().toLowerCase()}@publisher.invalid`;
