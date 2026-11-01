@@ -19,6 +19,7 @@ import { Route as JourneyRouteImport } from './routes/journey'
 import { Route as MentorshipRouteImport } from './routes/mentorship'
 import { Route as PreparationRouteImport } from './routes/preparation'
 import { Route as ShopRouteImport } from './routes/shop'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as StudioRouteImport } from './routes/studio'
 import { Route as TestSeriesRouteImport } from './routes/test-series'
 import { Route as VideosRouteImport } from './routes/videos'
@@ -74,6 +75,11 @@ const ShopRoute = ShopRouteImport.update({
   path: '/shop',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StudioRoute = StudioRouteImport.update({
   id: '/studio',
   path: '/studio',
@@ -106,6 +112,7 @@ export interface FileRoutesByFullPath {
   '/mentorship': typeof MentorshipRoute
   '/preparation': typeof PreparationRoute
   '/shop': typeof ShopRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/studio': typeof StudioRoute
   '/test-series': typeof TestSeriesRoute
   '/videos': typeof VideosRoute
@@ -122,6 +129,7 @@ export interface FileRoutesByTo {
   '/mentorship': typeof MentorshipRoute
   '/preparation': typeof PreparationRoute
   '/shop': typeof ShopRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/studio': typeof StudioRoute
   '/test-series': typeof TestSeriesRoute
   '/videos': typeof VideosRoute
@@ -139,6 +147,7 @@ export interface FileRoutesById {
   '/mentorship': typeof MentorshipRoute
   '/preparation': typeof PreparationRoute
   '/shop': typeof ShopRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/studio': typeof StudioRoute
   '/test-series': typeof TestSeriesRoute
   '/videos': typeof VideosRoute
@@ -157,6 +166,7 @@ export interface FileRouteTypes {
     | '/mentorship'
     | '/preparation'
     | '/shop'
+    | '/sitemap.xml'
     | '/studio'
     | '/test-series'
     | '/videos'
@@ -173,6 +183,7 @@ export interface FileRouteTypes {
     | '/mentorship'
     | '/preparation'
     | '/shop'
+    | '/sitemap.xml'
     | '/studio'
     | '/test-series'
     | '/videos'
@@ -189,6 +200,7 @@ export interface FileRouteTypes {
     | '/mentorship'
     | '/preparation'
     | '/shop'
+    | '/sitemap.xml'
     | '/studio'
     | '/test-series'
     | '/videos'
@@ -206,6 +218,7 @@ export interface RootRouteChildren {
   MentorshipRoute: typeof MentorshipRoute
   PreparationRoute: typeof PreparationRoute
   ShopRoute: typeof ShopRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   StudioRoute: typeof StudioRoute
   TestSeriesRoute: typeof TestSeriesRoute
   VideosRoute: typeof VideosRoute
@@ -283,6 +296,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShopRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/studio': {
       id: '/studio'
       path: '/studio'
@@ -337,6 +357,7 @@ const rootRouteChildren: RootRouteChildren = {
   MentorshipRoute: MentorshipRoute,
   PreparationRoute: PreparationRoute,
   ShopRoute: ShopRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   StudioRoute: StudioRoute,
   TestSeriesRoute: TestSeriesRoute,
   VideosRoute: VideosRoute,

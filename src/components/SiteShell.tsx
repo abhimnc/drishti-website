@@ -75,6 +75,9 @@ export function SiteShell({ children }: { children: ReactNode }) {
             <a href={links.whatsapp} className="hover:opacity-100">WhatsApp · 9821511909</a>
             <a href={links.telegram} target="_blank" rel="noreferrer" className="hover:opacity-100">Telegram</a>          </div>
         </div>
+        <p className="border-t border-ink-foreground/15 px-6 py-4 text-center text-xs opacity-70">
+          Made with Love <span aria-label="love">❤️</span> by <a href={links.builderLinkedin} target="_blank" rel="noreferrer" className="underline underline-offset-2 hover:opacity-100">Abhishek</a>
+        </p>
       </footer>
     </div>
   );

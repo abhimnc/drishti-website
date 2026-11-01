@@ -12,6 +12,8 @@ import { type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { PublishingSession } from "@/components/PublishingSession";
+import { links as siteLinks, siteUrl } from "@/lib/site";
+import portrait from "@/assets/mentorship/mentor-portrait.jpg";
 
 function NotFoundComponent() {
   return (
@@ -71,16 +73,36 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
+  head: ({ matches }) => {
+    const path = matches.at(-1)?.pathname.replace(/(.)\/$/, "$1") ?? "/";
+    const url = `${siteUrl}${path === "/" ? "" : path}`;
+    return {
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Dr. Drishti Kalra" },
       { name: "description", content: "UPSC, PCS and UGC NET-JRF mentorship with Dr. Drishti Kalra, JRF-qualified DU professor." },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Dr. Drishti Kalra" },
+      { property: "og:locale", content: "en_IN" },
+      { property: "og:url", content: url },
+      { property: "og:image", content: `${siteUrl}${portrait}` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    scripts: [{ type: "application/ld+json", children: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: "Dr. Drishti Kalra",
+      url: siteUrl,
+      image: `${siteUrl}${portrait}`,
+      jobTitle: "Assistant Professor of History and UPSC, PCS & UGC NET-JRF mentor",
+      worksFor: { "@type": "CollegeOrUniversity", name: "Shivaji College, University of Delhi" },
+      alumniOf: { "@type": "CollegeOrUniversity", name: "University of Delhi" },
+      knowsAbout: ["UPSC Civil Services", "State PCS", "UGC NET-JRF History", "Indian History", "Answer writing"],
+      sameAs: [siteLinks.linkedin],
+    }) }],
     links: [
+      { rel: "canonical", href: url },
       {
         rel: "stylesheet",
         href: appCss,
@@ -89,7 +111,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Karla:wght@400;500;600&display=swap" },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
-  }),
+    };
+  },
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,

@@ -1,5 +1,9 @@
+// Canonical public address; used for canonical links, social previews and the sitemap.
+export const siteUrl = "https://www.drdrishtikalra.in";
+
 export const links = {
   linkedin: "https://www.linkedin.com/in/dr-drishti-kalra-6a43b417b",
+  builderLinkedin: "https://www.linkedin.com/in/abhishek-k-38810b174/",
   whatsapp: "whatsapp://send?phone=919821511909",
   telegram: "https://web.telegram.org/k/#@drdrishtikalra",
   ncertOrder: "https://forms.gle/3TqT9PrCTAwno5Br7",
